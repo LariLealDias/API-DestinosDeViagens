@@ -1,6 +1,10 @@
-﻿namespace API_DestinosDeViagens.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace API_DestinosDeViagens.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class TestimonalController : ControllerBase
 {
-    public class TestimonalController
-    {
-    }
+    public int MyProperty { get; set; }
 }
