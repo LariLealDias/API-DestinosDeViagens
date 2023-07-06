@@ -10,7 +10,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var connectionString = builder.Configuration.GetConnectionString("DestinosDeViagensConnection");
 
 builder.Services.AddDbContext<DestinosdeViagensContext>(opts =>
-    opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+    opts.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
 
 builder.Services.AddControllers();

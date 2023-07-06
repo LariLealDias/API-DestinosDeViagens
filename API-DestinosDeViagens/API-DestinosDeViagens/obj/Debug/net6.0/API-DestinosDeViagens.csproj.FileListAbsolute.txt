@@ -41,3 +41,5 @@ C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-Desti
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\obj\Debug\net6.0\API-DestinosDeViagens.pdb
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\obj\Debug\net6.0\API-DestinosDeViagens.genruntimeconfig.cache
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\obj\Debug\net6.0\ref\API-DestinosDeViagens.dll
+C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
