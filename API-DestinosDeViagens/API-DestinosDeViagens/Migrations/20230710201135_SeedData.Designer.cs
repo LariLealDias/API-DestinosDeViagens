@@ -2,6 +2,7 @@
 using API_DestinosDeViagens.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,14 +10,48 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_DestinosDeViagens.Migrations
 {
     [DbContext(typeof(DestinosdeViagensContext))]
-    partial class DestinosdeViagensContextModelSnapshot : ModelSnapshot
+    [Migration("20230710201135_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("API_DestinosDeViagens.Data.SeedDatas.SeedData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SeedDataSet");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Maria",
+                            PhotoPath = "/assets/imgs/photoUser1.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "John",
+                            PhotoPath = "/assets/imgs/photoUser2.jpg"
+                        });
+                });
 
             modelBuilder.Entity("API_DestinosDeViagens.Models.CustomerModel", b =>
                 {
@@ -35,20 +70,6 @@ namespace API_DestinosDeViagens.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Maria",
-                            PhotoPath = "/assets/imgs/photoUser1.jpg"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "John",
-                            PhotoPath = "/assets/imgs/photoUser2.jpg"
-                        });
                 });
 
             modelBuilder.Entity("API_DestinosDeViagens.Models.TestimonialModel", b =>
@@ -64,11 +85,6 @@ namespace API_DestinosDeViagens.Migrations
                         .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 

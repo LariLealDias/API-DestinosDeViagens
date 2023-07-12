@@ -9,7 +9,12 @@ public class TestimonialModel
 
 
     [Required]
-    [MaxLength(300, ErrorMessage = "Text fild can't ultrapass 300 characters")]
+    [MaxLength(50, ErrorMessage = "Title field can't ultrapass 50 characters")]
+    public string Title { get; set; }
+
+
+    [Required]
+    [MaxLength(300, ErrorMessage = "Text field can't ultrapass 300 characters")]
     public string Text { get; set; }
 
     //1:1
