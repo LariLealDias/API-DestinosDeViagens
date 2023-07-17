@@ -1,7 +1,6 @@
-﻿using API_DestinosDeViagens.Data;
-using API_DestinosDeViagens.Data.Dtos.DtoTestimonial;
+﻿using API_DestinosDeViagens.Data.Dtos.DtoTestimonial;
 using API_DestinosDeViagens.Models;
-using AutoMapper;
+using API_DestinosDeViagens.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_DestinosDeViagens.Controllers;
@@ -10,29 +9,51 @@ namespace API_DestinosDeViagens.Controllers;
 [Route("[controller]")]
 public class TestimonialController : ControllerBase
 {
-    public IMapper _mapper { get; set; }
-    public DestinosdeViagensContext _context { get; set; }
-
-    public TestimonialController(IMapper mapper, DestinosdeViagensContext contex)
+    private TestimonialService _testimonialService;
+    public TestimonialController(TestimonialService testimonialService)
     {
-        _mapper = mapper;
-        _context = contex;
+        _testimonialService = testimonialService;
     }
 
     [HttpPost]
     public IActionResult CreateTestimonial([FromBody] CreateTestimonialDto testimonialDto)
     {
-        TestimonialModel testimonial = _mapper.Map<TestimonialModel>(testimonialDto);
-        _context.Testimonials.Add(testimonial);
-        _context.SaveChanges();
-        return CreatedAtAction(nameof(GetTestimonialById), new { id = testimonial.Id }, testimonial);
+        try
+        {
+            TestimonialModel testimonial = _testimonialService.Add(testimonialDto);
+
+            //send a location  
+            var controllerName = ControllerContext.ActionDescriptor.ControllerName;
+            var localhostAddress = HttpContext.Request.Host.ToUriComponent();
+            var resourceUrl = $"https://{localhostAddress}/{controllerName}/{testimonial.Id}";
+
+            //send the object created
+            var response = new
+            {
+                id = testimonial.Id,
+                title = testimonial.Title,
+                text = testimonial.Text,
+                CustomerModelId = testimonial.CustomerModel,
+            };
+
+            return Created(resourceUrl, response);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpGet("{id}")]
     public IActionResult GetTestimonialById(int id)
     {
-        var testimonial = _context.Testimonials.FirstOrDefault(testi => testi.Id == id);
-        if (testimonial == null) return NotFound();
+        var testimonialId = _testimonialService.GetById(id);
+        if(testimonialId == null)
+        {
+            return NotFound();
+        }
+        var testimonial = _testimonialService.GetMappingById(id);
+
         return Ok(testimonial);
     }
 }

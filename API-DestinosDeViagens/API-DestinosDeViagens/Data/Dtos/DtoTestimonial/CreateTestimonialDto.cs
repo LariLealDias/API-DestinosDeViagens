@@ -4,11 +4,6 @@ namespace API_DestinosDeViagens.Data.Dtos.DtoTestimonial;
 
 public class CreateTestimonialDto
 {
-
-    [Required(ErrorMessage = "Photo field can't be empty")]
-    public string PhotoPath { get; set; }
-
-
     [Required]
     [MaxLength(50, ErrorMessage = "Title field can't ultrapass 50 characters")]
     public string Title { get; set; }
@@ -19,9 +14,6 @@ public class CreateTestimonialDto
     public string Text { get; set; }
 
 
-    [Required(ErrorMessage = "Name field can't be empty")]
-    [RegularExpression("^[A-Za-z]+$", ErrorMessage = "Name fild must be only letters")]
-    public string Name { get; set; }
 
     //relationship 1:1
     public int CustomerModelId { get; set; }
