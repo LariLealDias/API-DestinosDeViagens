@@ -2,6 +2,7 @@
 using API_DestinosDeViagens.Models;
 using API_DestinosDeViagens.Repository.RepositoryTestimonial;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API_DestinosDeViagens.Services;
 
@@ -27,6 +28,11 @@ public class TestimonialService
     {
         var findById = _iTestimonialRepository.GetById(id);
         return findById;
+    }
+
+    public IEnumerable<ReadTestimonialDto> getPaging([FromQuery] int skip = 0, int take = 0)
+    {
+        return _mapper.Map<List<ReadTestimonialDto>>(_iTestimonialRepository.GetPaging(skip, take).ToList());
     }
 
 

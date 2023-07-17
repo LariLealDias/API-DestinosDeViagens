@@ -6,7 +6,7 @@ public interface ITestimonialRepository
 {
     void Add(TestimonialModel testimonial);
 
-    //IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3 );
+    IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3 );
 
     TestimonialModel? GetById(int id);
 

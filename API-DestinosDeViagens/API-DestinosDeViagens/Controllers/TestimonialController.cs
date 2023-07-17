@@ -44,6 +44,26 @@ public class TestimonialController : ControllerBase
         }
     }
 
+    [HttpGet]
+    public IActionResult GetTestimonial([FromQuery] int skip = 0, int take = 0)
+    {
+        try
+        {
+            IEnumerable<ReadTestimonialDto> testimonials = _testimonialService.getPaging(skip, take);
+
+            if(testimonials != null && testimonials.Any())
+            {
+                return Ok(testimonials);
+            }
+            return NoContent();
+
+        }
+        catch(Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
     [HttpGet("{id}")]
     public IActionResult GetTestimonialById(int id)
     {

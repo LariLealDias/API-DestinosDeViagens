@@ -22,10 +22,10 @@ public class TestimonialRepository : ITestimonialRepository
         return findTestimonialById;
     }
 
-    //public IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3)
-    //{
-    //    throw new NotImplementedException();
-    //}
+    public IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3)
+    {
+       return _contex.Testimonials.Skip(skip).Take(take);   
+    }
 
     //public void Remove()
     //{
