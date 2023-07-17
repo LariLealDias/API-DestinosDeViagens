@@ -20,9 +20,10 @@ builder.Services.AddDbContext<DestinosdeViagensContext>(opts =>
 
 
 #region Config Injection dependencies (Service and Repository)
-builder.Services.AddScoped<TestimonialService>();
+//builder.Services.AddScoped<TestimonialService>();
 builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
 #endregion
+
 builder.Services.AddControllers();
 
 

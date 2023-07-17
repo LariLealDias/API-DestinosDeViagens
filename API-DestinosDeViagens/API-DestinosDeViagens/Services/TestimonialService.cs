@@ -1,6 +1,6 @@
 ﻿using API_DestinosDeViagens.Data.Dtos.DtoTestimonial;
 using API_DestinosDeViagens.Models;
-//using API_DestinosDeViagens.Repository.RepositoryTestimonial;
+using API_DestinosDeViagens.Repository.RepositoryTestimonial;
 using AutoMapper;
 
 namespace API_DestinosDeViagens.Services;
