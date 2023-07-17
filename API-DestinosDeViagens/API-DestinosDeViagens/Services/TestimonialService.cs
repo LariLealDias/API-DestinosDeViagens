@@ -7,25 +7,25 @@ namespace API_DestinosDeViagens.Services;
 
 public class TestimonialService
 {
-    private TestimonialRepository _testimonialRepository;
+    private ITestimonialRepository  _iTestimonialRepository;
     private IMapper _mapper;
-    public TestimonialService(TestimonialRepository repository, IMapper mapper)
+    public TestimonialService(ITestimonialRepository repository, IMapper mapper)
     {
-        _testimonialRepository = repository;
+        _iTestimonialRepository = repository;
         _mapper = mapper;
     }
 
     public TestimonialModel Add(CreateTestimonialDto testimonialDto)
     {
         TestimonialModel testimonialMapped = _mapper.Map<TestimonialModel>(testimonialDto);
-        _testimonialRepository.Add(testimonialMapped);
+        _iTestimonialRepository.Add(testimonialMapped);
         return testimonialMapped;
     }
 
 
     public TestimonialModel? GetById(int id)
     {
-        var findById = _testimonialRepository.GetById(id);
+        var findById = _iTestimonialRepository.GetById(id);
         return findById;
     }
 
