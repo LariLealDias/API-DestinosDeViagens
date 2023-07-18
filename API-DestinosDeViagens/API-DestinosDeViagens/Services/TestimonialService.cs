@@ -24,17 +24,22 @@ public class TestimonialService
     }
 
 
+    public IEnumerable<ReadTestimonialDto> getPaging(int skip = 0, int take = 3)
+    {
+        return _mapper.Map<List<ReadTestimonialDto>>(_iTestimonialRepository.GetPaging(skip, take).ToList());
+    }
+
+
     public TestimonialModel? GetById(int id)
     {
         var findById = _iTestimonialRepository.GetById(id);
         return findById;
     }
 
-    public IEnumerable<ReadTestimonialDto> getPaging([FromQuery] int skip = 0, int take = 0)
+    public void DeleteById(TestimonialModel id)
     {
-        return _mapper.Map<List<ReadTestimonialDto>>(_iTestimonialRepository.GetPaging(skip, take).ToList());
+        _iTestimonialRepository.Remove(id);
     }
-
 
     //Mapping to DTOs layer
     public ReadTestimonialDto GetMappingById(int id)
@@ -42,5 +47,21 @@ public class TestimonialService
         var testimonialId = GetById(id);
         var testimonialMapped = _mapper.Map<ReadTestimonialDto>(testimonialId);
         return testimonialMapped;
+    }
+
+
+    //Patch
+    public UpdateTestimonialDto PrepareTestimonialForUpdate(int id)
+    {
+        var idTestimonial = GetById(id);
+        var dto = _mapper.Map<UpdateTestimonialDto>(idTestimonial);
+        return dto;
+    }
+
+    public TestimonialModel ApplyUpdateValues(UpdateTestimonialDto testimonialDto, TestimonialModel idUpadated)
+    {
+        var mapping = _mapper.Map(testimonialDto, idUpadated);
+        _iTestimonialRepository.SaveChanges();
+        return mapping;
     }
 }

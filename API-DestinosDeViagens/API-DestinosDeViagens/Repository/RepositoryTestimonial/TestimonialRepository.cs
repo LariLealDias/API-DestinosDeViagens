@@ -16,7 +16,7 @@ public class TestimonialRepository : ITestimonialRepository
         SaveChanges();
     }
 
-    public TestimonialModel? GetById(int id)
+    public TestimonialModel GetById(int id)
     {
         var findTestimonialById = _contex.Testimonials.FirstOrDefault(t => t.Id == id);
         return findTestimonialById;
@@ -27,10 +27,11 @@ public class TestimonialRepository : ITestimonialRepository
        return _contex.Testimonials.Skip(skip).Take(take);   
     }
 
-    //public void Remove()
-    //{
-    //    throw new NotImplementedException();
-    //}
+    public void Remove(TestimonialModel id)
+    {
+        _contex.Testimonials.Remove(id);
+        SaveChanges();
+    }
 
     public void SaveChanges()
     {

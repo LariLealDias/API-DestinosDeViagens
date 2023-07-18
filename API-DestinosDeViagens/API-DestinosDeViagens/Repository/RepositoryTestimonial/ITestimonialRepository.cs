@@ -12,5 +12,5 @@ public interface ITestimonialRepository
 
     void SaveChanges();
 
-    //void Remove();
+    void Remove(TestimonialModel id);
 }
