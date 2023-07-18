@@ -8,7 +8,10 @@ public interface ITestimonialRepository
 
     IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3 );
 
+    IEnumerable<TestimonialModel> GetAll();
+
     TestimonialModel? GetById(int id);
+
 
     void SaveChanges();
 

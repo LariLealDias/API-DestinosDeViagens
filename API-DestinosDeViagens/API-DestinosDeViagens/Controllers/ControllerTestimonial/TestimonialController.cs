@@ -51,7 +51,7 @@ public class TestimonialController : ControllerBase
     {
         try
         {
-            IEnumerable<ReadTestimonialDto> testimonials = _testimonialService.getPaging(skip, take);
+            IEnumerable<ReadTestimonialDto> testimonials = _testimonialService.GetPaging(skip, take);
 
             if (testimonials != null && testimonials.Any())
             {

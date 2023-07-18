@@ -10,11 +10,25 @@ public class TestimonialRepository : ITestimonialRepository
     {
         _contex = contex;
     }
+
     public void Add(TestimonialModel testimonial)
     {
         _contex.Testimonials.Add(testimonial);
         SaveChanges();
     }
+
+
+    public IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3)
+    {
+       return _contex.Testimonials.Skip(skip).Take(take);   
+    }
+
+
+    public IEnumerable<TestimonialModel> GetAll()
+    {
+        return _contex.Testimonials;
+    }
+
 
     public TestimonialModel GetById(int id)
     {
@@ -22,16 +36,13 @@ public class TestimonialRepository : ITestimonialRepository
         return findTestimonialById;
     }
 
-    public IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3)
-    {
-       return _contex.Testimonials.Skip(skip).Take(take);   
-    }
 
     public void Remove(TestimonialModel id)
     {
         _contex.Testimonials.Remove(id);
         SaveChanges();
     }
+
 
     public void SaveChanges()
     {

@@ -16,6 +16,7 @@ public class TestimonialService
         _mapper = mapper;
     }
 
+    //POST
     public TestimonialModel Add(CreateTestimonialDto testimonialDto)
     {
         TestimonialModel testimonialMapped = _mapper.Map<TestimonialModel>(testimonialDto);
@@ -23,34 +24,35 @@ public class TestimonialService
         return testimonialMapped;
     }
 
-
-    public IEnumerable<ReadTestimonialDto> getPaging(int skip = 0, int take = 3)
+     
+    //GET 3 resource 
+    public IEnumerable<ReadTestimonialDto> GetPaging(int skip = 0, int take = 3)
     {
         return _mapper.Map<List<ReadTestimonialDto>>(_iTestimonialRepository.GetPaging(skip, take).ToList());
     }
 
+    //GET 3 random resource 
+    public IEnumerable<ReadTestimonialDto> GetThreeRandom()
+    {
+        var allTestimonials = _iTestimonialRepository.GetAll();
 
+        var randomTestimonials = allTestimonials.OrderBy(testimonials => Guid.NewGuid()).Take(3).ToList();
+
+        return _mapper.Map<List<ReadTestimonialDto>>(randomTestimonials);
+    }
+
+
+    //GET by id
     public TestimonialModel? GetById(int id)
     {
         var findById = _iTestimonialRepository.GetById(id);
         return findById;
     }
 
-    public void DeleteById(TestimonialModel id)
-    {
-        _iTestimonialRepository.Remove(id);
-    }
-
-    //Mapping to DTOs layer
-    public ReadTestimonialDto GetMappingById(int id)
-    {
-        var testimonialId = GetById(id);
-        var testimonialMapped = _mapper.Map<ReadTestimonialDto>(testimonialId);
-        return testimonialMapped;
-    }
 
 
-    //Patch
+
+    //PATCH
     public UpdateTestimonialDto PrepareTestimonialForUpdate(int id)
     {
         var idTestimonial = GetById(id);
@@ -63,5 +65,21 @@ public class TestimonialService
         var mapping = _mapper.Map(testimonialDto, idUpadated);
         _iTestimonialRepository.SaveChanges();
         return mapping;
+    }
+  
+    
+    //DELETE
+    public void DeleteById(TestimonialModel id)
+    {
+        _iTestimonialRepository.Remove(id);
+    }
+   
+    
+    //Mapping to DTOs layer
+    public ReadTestimonialDto GetMappingById(int id)
+    {
+        var testimonialId = GetById(id);
+        var testimonialMapped = _mapper.Map<ReadTestimonialDto>(testimonialId);
+        return testimonialMapped;
     }
 }
