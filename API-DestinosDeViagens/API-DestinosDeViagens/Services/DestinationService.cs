@@ -27,7 +27,7 @@ public class DestinationService
 
 
     //GET 3 resource 
-    public IEnumerable<ReadDestinationDto> GetPaging(int skip = 0, int take = 3)
+    public IEnumerable<ReadDestinationDto> GetPaging(int skip = 0, int take = 6)
     {
         return _mapper.Map<List<ReadDestinationDto>>(_iDestinationRepository.GetPaging(skip, take).ToList());
     }

@@ -2,6 +2,7 @@
 using API_DestinosDeViagens.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_DestinosDeViagens.Migrations
 {
     [DbContext(typeof(DestinosdeViagensContext))]
-    partial class DestinosdeViagensContextModelSnapshot : ModelSnapshot
+    [Migration("20230719213316_FixingDataTypeInDestinationTable")]
+    partial class FixingDataTypeInDestinationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,8 +63,8 @@ namespace API_DestinosDeViagens.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("Title")
                         .IsRequired()

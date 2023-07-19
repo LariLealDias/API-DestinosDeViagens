@@ -1,4 +1,5 @@
 using API_DestinosDeViagens.Data;
+using API_DestinosDeViagens.Repository.RepositoryDestination;
 using API_DestinosDeViagens.Repository.RepositoryTestimonial;
 using API_DestinosDeViagens.Services;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +21,14 @@ builder.Services.AddDbContext<DestinosdeViagensContext>(opts =>
 
 
 #region Config Injection dependencies (Service and Repository)
+
+//Testimonial config
 builder.Services.AddScoped<TestimonialService>();
 builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+
+//Destination config
+builder.Services.AddScoped<DestinationService>();
+builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
 #endregion
 
 builder.Services.AddControllers();

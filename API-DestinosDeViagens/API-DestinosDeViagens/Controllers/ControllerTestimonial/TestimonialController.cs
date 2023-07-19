@@ -91,7 +91,7 @@ public class TestimonialController : ControllerBase
     }
 
 
-    [HttpPut("{id}")]
+    [HttpPatch("{id}")]
     public IActionResult UpdateTestimonial(int id, JsonPatchDocument<UpdateTestimonialDto> patch)
     {
         try
@@ -121,9 +121,6 @@ public class TestimonialController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-
-
-
 
 
     [HttpDelete("{id}")]

@@ -32,7 +32,7 @@ public class DestinationRepository : IDestinationRepository
     }
 
 
-    public IEnumerable<DestinationModel> GetPaging(int skip = 0, int take = 3)
+    public IEnumerable<DestinationModel> GetPaging(int skip = 0, int take = 6)
     {
         return _contex.Destinations.Skip(skip).Take(take);
     }

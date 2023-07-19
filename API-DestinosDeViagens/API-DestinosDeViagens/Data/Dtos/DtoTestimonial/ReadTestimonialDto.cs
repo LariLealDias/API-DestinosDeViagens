@@ -5,6 +5,7 @@ namespace API_DestinosDeViagens.Data.Dtos.DtoTestimonial;
 
 public class ReadTestimonialDto
 {
+    public int Id { get; set; }
     public string Title { get; set; }
     public string Text { get; set; }
 

@@ -15,5 +15,5 @@ public class DestinationModel
     public string Title { get; set; }
 
     [Required(ErrorMessage = "Price field can't be empty")]
-    public double Price { get; set; }
+    public float Price { get; set; }
 }
