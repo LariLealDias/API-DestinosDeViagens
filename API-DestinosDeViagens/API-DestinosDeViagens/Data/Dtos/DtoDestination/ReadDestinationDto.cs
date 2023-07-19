@@ -2,7 +2,7 @@
 
 namespace API_DestinosDeViagens.Data.Dtos.DtoDestination;
 
-public class ReadDestionationDto
+public class ReadDestinationDto
 {
     public int Id { get; set; }
     public string PhotoPath { get; set; }
