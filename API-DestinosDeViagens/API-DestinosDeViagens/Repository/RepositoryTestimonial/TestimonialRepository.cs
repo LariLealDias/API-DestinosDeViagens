@@ -11,6 +11,7 @@ public class TestimonialRepository : ITestimonialRepository
         _contex = contex;
     }
 
+
     public void Add(TestimonialModel testimonial)
     {
         _contex.Testimonials.Add(testimonial);
@@ -18,15 +19,15 @@ public class TestimonialRepository : ITestimonialRepository
     }
 
 
-    public IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3)
-    {
-       return _contex.Testimonials.Skip(skip).Take(take);   
-    }
-
-
     public IEnumerable<TestimonialModel> GetAll()
     {
         return _contex.Testimonials;
+    }
+
+
+    public IEnumerable<TestimonialModel> GetPaging(int skip = 0, int take = 3)
+    {
+       return _contex.Testimonials.Skip(skip).Take(take);   
     }
 
 

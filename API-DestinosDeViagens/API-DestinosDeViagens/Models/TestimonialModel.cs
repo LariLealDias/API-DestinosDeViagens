@@ -8,12 +8,12 @@ public class TestimonialModel
     public int Id { get; set; }
 
 
-    [Required]
+    [Required(ErrorMessage = "Title field can't be empty")]
     [MaxLength(50, ErrorMessage = "Title field can't ultrapass 50 characters")]
     public string Title { get; set; }
 
 
-    [Required]
+    [Required(ErrorMessage = "Text field can't be empty")]
     [MaxLength(300, ErrorMessage = "Text field can't ultrapass 300 characters")]
     public string Text { get; set; }
 

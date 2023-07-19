@@ -12,7 +12,6 @@ public interface ITestimonialRepository
 
     TestimonialModel? GetById(int id);
 
-
     void SaveChanges();
 
     void Remove(TestimonialModel id);

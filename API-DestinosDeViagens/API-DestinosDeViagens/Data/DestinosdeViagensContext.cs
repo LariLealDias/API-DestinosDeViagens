@@ -22,4 +22,5 @@ public class DestinosdeViagensContext : DbContext
 
     public DbSet<TestimonialModel> Testimonials { get; set;}
     public DbSet<CustomerModel> Customers { get; set;}
+    public DbSet<DestinationModel> Destinations { get; set; }
 }

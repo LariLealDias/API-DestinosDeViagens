@@ -51,6 +51,29 @@ namespace API_DestinosDeViagens.Migrations
                         });
                 });
 
+            modelBuilder.Entity("API_DestinosDeViagens.Models.DestinationModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Destinations");
+                });
+
             modelBuilder.Entity("API_DestinosDeViagens.Models.TestimonialModel", b =>
                 {
                     b.Property<int>("Id")
