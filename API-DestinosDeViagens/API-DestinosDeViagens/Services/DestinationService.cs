@@ -44,11 +44,18 @@ public class DestinationService
     }
 
 
-    //GET by id
+    //GET by Id
     public DestinationModel? GetById(int id)
     {
         var findById = _iDestinationRepository.GetById(id);
         return findById;
+    }
+
+
+    //GET only by Title
+    public IEnumerable<ReadDestinationDto> GetByTitle(string title)
+    {
+        return _mapper.Map<List<ReadDestinationDto>>(_iDestinationRepository.GetByTitle(title).ToList());
     }
 
 

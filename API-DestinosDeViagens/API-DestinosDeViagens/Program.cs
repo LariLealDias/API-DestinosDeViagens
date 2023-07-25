@@ -19,7 +19,6 @@ builder.Services.AddDbContext<DestinosdeViagensContext>(opts =>
 );
 #endregion
 
-
 #region Config Injection dependencies (Service and Repository)
 
 //Testimonial config
@@ -32,7 +31,6 @@ builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
 #endregion
 
 builder.Services.AddControllers();
-
 
 #region config Cors
 builder.Services.AddCors(options =>

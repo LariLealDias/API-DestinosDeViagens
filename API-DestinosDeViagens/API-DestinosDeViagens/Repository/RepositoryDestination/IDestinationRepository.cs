@@ -6,11 +6,13 @@ public interface IDestinationRepository
 {
     void Add(DestinationModel destimonial);
 
-    IEnumerable<DestinationModel> GetPaging(int skip = 0, int take = 6);
-
     IEnumerable<DestinationModel> GetAll();
 
+    IEnumerable<DestinationModel> GetPaging(int skip = 0, int take = 6);
+
     DestinationModel? GetById(int id);
+
+    IEnumerable<DestinationModel> GetByTitle(string title);
 
     void SaveChanges();
 

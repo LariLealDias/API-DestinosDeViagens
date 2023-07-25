@@ -48,7 +48,7 @@ public class DestinationController : ControllerBase
 
 
     [HttpGet]
-    public IActionResult GetDestination(int skip = 0, int take = 6)
+    public IActionResult GetDestination([FromQuery] int skip = 0, [FromQuery] int take = 6)
     {
         try
         {
@@ -74,7 +74,7 @@ public class DestinationController : ControllerBase
         {
             var destination = _destinationService.GetById(id);
 
-            if(destination != null)
+            if (destination != null)
             {
                 var mappingDto = _destinationService.GetMappingById(id);
                 return Ok(mappingDto);
@@ -82,7 +82,36 @@ public class DestinationController : ControllerBase
 
             return NotFound();
 
-        }catch(Exception e)
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    
+    [HttpGet("title/{title}")] //outra forma de fazer busca 
+    public IActionResult GetDestinationByTitle(string title)
+    {
+        try
+        {
+            var titleDestination = _destinationService.GetByTitle(title);
+
+
+            if (titleDestination != null)
+            {
+                return Ok(titleDestination);
+            }
+            var response = new
+            {
+                message = "Nenhum destino foi encontrado"
+            };
+
+            return Ok(response);
+            //return NoContentResult(response);
+
+        }
+        catch (Exception e)
         {
             return BadRequest(e.Message);
         }

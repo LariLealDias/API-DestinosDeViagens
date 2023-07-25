@@ -1,4 +1,5 @@
-﻿using API_DestinosDeViagens.Data.Dtos.DtoTestimonial;
+﻿using API_DestinosDeViagens.Data.Dtos.DtoCustomer;
+using API_DestinosDeViagens.Data.Dtos.DtoTestimonial;
 using API_DestinosDeViagens.Models;
 using API_DestinosDeViagens.Services;
 using Microsoft.AspNetCore.JsonPatch;
@@ -29,12 +30,23 @@ public class TestimonialController : ControllerBase
             var resourceUrl = $"https://{localhostAddress}/{controllerName}/{testimonial.Id}";
 
             //send the object created
-            var response = new
+            var response = new 
             {
                 id = testimonial.Id,
                 title = testimonial.Title,
                 text = testimonial.Text,
-                CustomerModelId = testimonial.CustomerModel,
+                //1
+                //readCustomerDto = new ReadCustomerDto
+                //{
+                //   Id = testimonial.CustomerModel.Id,
+                //   PhotoPath = testimonial.CustomerModel.PhotoPath,
+                //   Name = testimonial.CustomerModel.Name
+                //}
+                //2
+                //CustomerModelId = testimonial.CustomerModel.Id,
+                //CostumerModelPhotoPath = testimonial.CustomerModel.PhotoPath,
+                //CostumerModelName = testimonial.CustomerModel.Name
+                 CustomerModelId = testimonial.CustomerModel
             };
 
             return Created(resourceUrl, response);
@@ -47,7 +59,7 @@ public class TestimonialController : ControllerBase
 
 
     [HttpGet]
-    public IActionResult GetTestimonial([FromQuery] int skip = 0, int take = 3)
+    public IActionResult GetTestimonial([FromQuery] int skip = 0, [FromQuery] int take = 3)
     {
         try
         {
