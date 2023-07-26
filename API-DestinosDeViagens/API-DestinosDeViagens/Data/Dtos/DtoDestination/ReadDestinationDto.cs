@@ -8,4 +8,5 @@ public class ReadDestinationDto
     public string PhotoPath { get; set; }
     public string Title { get; set; }
     public double Price { get; set; }
+    public string DescriptiveText { get; set; }
 }

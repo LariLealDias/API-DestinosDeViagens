@@ -13,4 +13,9 @@ public class UpdateDestinationDto
 
     [Required(ErrorMessage = "Price field can't be empty")]
     public double Price { get; set; }
+
+
+    [Required(ErrorMessage = "DescriptiveText field can't be empty")]
+    [MaxLength(160, ErrorMessage = "DescriptiveText field can't ultrapass 160 characters")]
+    public string DescriptiveText { get; set; }
 }
