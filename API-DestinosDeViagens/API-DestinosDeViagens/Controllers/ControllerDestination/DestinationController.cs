@@ -54,7 +54,7 @@ public class DestinationController : ControllerBase
         {
             IEnumerable<ReadDestinationDto> destination = _destinationService.GetPaging(skip, take);
 
-            if (destination != null)
+            if (destination != null && destination.Any())
             {
                 return Ok(destination);
             }
@@ -98,17 +98,18 @@ public class DestinationController : ControllerBase
             var titleDestination = _destinationService.GetByTitle(title);
 
 
-            if (titleDestination != null)
+            if (titleDestination != null && titleDestination.Any())
             {
                 return Ok(titleDestination);
             }
+
+
             var response = new
             {
                 message = "Nenhum destino foi encontrado"
             };
 
             return Ok(response);
-            //return NoContentResult(response);
 
         }
         catch (Exception e)
