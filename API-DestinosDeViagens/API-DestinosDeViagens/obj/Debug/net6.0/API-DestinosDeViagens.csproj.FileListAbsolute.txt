@@ -47,3 +47,4 @@ C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-Desti
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\API-DestinosDeViagens\bin\Debug\net6.0\libman.json

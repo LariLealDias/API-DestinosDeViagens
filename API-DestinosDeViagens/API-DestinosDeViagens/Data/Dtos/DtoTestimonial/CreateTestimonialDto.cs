@@ -9,8 +9,8 @@ public class CreateTestimonialDto
     public string Title { get; set; }
 
 
-    [Required]
-    [MaxLength(300, ErrorMessage = "Text field can't ultrapass 300 characters")]
+    //[Required]
+    //[MaxLength(300, ErrorMessage = "Text field can't ultrapass 300 characters")]
     public string Text { get; set; }
 
 

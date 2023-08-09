@@ -28,7 +28,7 @@ public class TestimonialService
         return testimonialMapped;
     }
 
-    public async Task GetResponseChatGPTAsync(CreateTestimonialDto testimonialDto)
+    public async Task<dynamic> GetResponseChatGPTAsync(CreateTestimonialDto testimonialDto)
     {
         string keyChatGPT = _config["ChaveAPIChatGPT"];
         string promptText = "";
@@ -54,7 +54,10 @@ public class TestimonialService
 
 
         TestimonialModel testimonialMapped = _mapper.Map<TestimonialModel>(testimonialDto);
-        testimonialMapped.Text = response.choice[0].text;
+        return response.choice[0].text;
+
+
+        //return "stonf";
     }
 
 

@@ -22,12 +22,12 @@ public class TestimonialController : ControllerBase
     {
         try
         {
-            if (testimonialDto.Title == null)
+
+            if (testimonialDto.Text == "")
             {
-
+                testimonialDto.Text = _testimonialService.GetResponseChatGPTAsync(testimonialDto);
             }
-
-
+          
             TestimonialModel testimonial = _testimonialService.Add(testimonialDto);
 
             //send a location  

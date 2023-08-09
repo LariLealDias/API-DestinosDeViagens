@@ -416,3 +416,4 @@ C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-Desti
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\DestinosDeViagens.Teste\bin\Debug\net6.0\Microsoft.AspNetCore.TestHost.dll
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\DestinosDeViagens.Teste\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\DestinosDeViagens.Teste\obj\Debug\net6.0\MvcTestingAppManifest.json
+C:\Users\laril\OneDrive\Documentos\Projetos pessoais\DestinosDeViagens\API-DestinosDeViagens\DestinosDeViagens.Teste\bin\Debug\net6.0\libman.json
