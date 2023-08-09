@@ -19,6 +19,8 @@ builder.Services.AddDbContext<DestinosdeViagensContext>(opts =>
 );
 #endregion
 
+builder.Services.AddControllers();
+
 #region Config Injection dependencies (Service and Repository)
 
 //Testimonial config
@@ -29,8 +31,6 @@ builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
 builder.Services.AddScoped<DestinationService>();
 builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
 #endregion
-
-builder.Services.AddControllers();
 
 #region config Cors
 builder.Services.AddCors(options =>
@@ -44,6 +44,8 @@ builder.Services.AddCors(options =>
         });
 });
 #endregion
+
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
