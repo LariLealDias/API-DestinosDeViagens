@@ -2,7 +2,9 @@
 using API_DestinosDeViagens.Models;
 using API_DestinosDeViagens.Repository.RepositoryTestimonial;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace API_DestinosDeViagens.Services;
 
@@ -10,10 +12,12 @@ public class TestimonialService
 {
     private ITestimonialRepository  _iTestimonialRepository;
     private IMapper _mapper;
-    public TestimonialService(ITestimonialRepository repository, IMapper mapper)
+    private IConfiguration _config;
+    public TestimonialService(ITestimonialRepository repository, IMapper mapper, IConfiguration config)
     {
         _iTestimonialRepository = repository;
         _mapper = mapper;
+        _config = config;
     }
 
     //POST
@@ -24,7 +28,36 @@ public class TestimonialService
         return testimonialMapped;
     }
 
-     
+    public async Task GetResponseChatGPTAsync(CreateTestimonialDto testimonialDto)
+    {
+        string keyChatGPT = _config["ChaveAPIChatGPT"];
+        string promptText = "";
+
+        var reqClient = new HttpClient();
+        reqClient.DefaultRequestHeaders.Add("authorization", $"Bearer {keyChatGPT}");
+
+        var json = JsonConvert.SerializeObject(
+            new
+            {
+                model = "text-davinci-003",
+                prompt = promptText,
+                max_tokens = 100,
+                temperature = 1
+            }
+         );
+
+        var httpResponse = await reqClient.PostAsync("https://api.openai.com/v1/completions", new StringContent(json, Encoding.UTF8, "application/json"));
+
+        var data = await httpResponse.Content.ReadAsStringAsync();
+
+        var response = JsonConvert.DeserializeObject<dynamic>(data);
+
+
+        TestimonialModel testimonialMapped = _mapper.Map<TestimonialModel>(testimonialDto);
+        testimonialMapped.Text = response.choice[0].text;
+    }
+
+
     //GET 3 resource 
     public IEnumerable<ReadTestimonialDto> GetPaging(int skip = 0, int take = 3)
     {

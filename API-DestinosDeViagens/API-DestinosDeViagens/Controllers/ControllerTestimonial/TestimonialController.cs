@@ -22,6 +22,12 @@ public class TestimonialController : ControllerBase
     {
         try
         {
+            if (testimonialDto.Title == null)
+            {
+
+            }
+
+
             TestimonialModel testimonial = _testimonialService.Add(testimonialDto);
 
             //send a location  
@@ -35,18 +41,7 @@ public class TestimonialController : ControllerBase
                 id = testimonial.Id,
                 title = testimonial.Title,
                 text = testimonial.Text,
-                //1
-                //readCustomerDto = new ReadCustomerDto
-                //{
-                //   Id = testimonial.CustomerModel.Id,
-                //   PhotoPath = testimonial.CustomerModel.PhotoPath,
-                //   Name = testimonial.CustomerModel.Name
-                //}
-                //2
-                //CustomerModelId = testimonial.CustomerModel.Id,
-                //CostumerModelPhotoPath = testimonial.CustomerModel.PhotoPath,
-                //CostumerModelName = testimonial.CustomerModel.Name
-                 CustomerModelId = testimonial.CustomerModel
+                CustomerModelId = testimonial.CustomerModel
             };
 
             return Created(resourceUrl, response);
