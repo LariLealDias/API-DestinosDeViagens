@@ -1,3 +1,5 @@
 ﻿*.dll
 *.exe
 appsettings.json
+secret.json
+
