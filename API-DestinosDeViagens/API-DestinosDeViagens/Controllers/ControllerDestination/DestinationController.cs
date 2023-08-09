@@ -11,7 +11,7 @@ namespace API_DestinosDeViagens.Controllers.ControllerDestination;
 public class DestinationController : ControllerBase
 {
     private DestinationService _destinationService;
-    public DestinationController(DestinationService destinationService)
+    public DestinationController(DestinationService destinationService, IConfiguration config)
     {
         _destinationService = destinationService;
     }
