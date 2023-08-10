@@ -35,7 +35,15 @@ public class SeedDataConfiguration : IEntityTypeConfiguration<CustomerModel>
             new CustomerModel { Id = 19, PhotoPath = "/assets/imgs/photoUser13.jpg", Name = "Skinner" },
             new CustomerModel { Id = 20, PhotoPath = "/assets/imgs/photoUser14.jpg", Name = "Lina" },
             new CustomerModel { Id = 21, PhotoPath = "/assets/imgs/photoUser13.jpg", Name = "Skinner" },
-            new CustomerModel { Id = 22, PhotoPath = "/assets/imgs/photoUser14.jpg", Name = "Lina" }
+            new CustomerModel { Id = 22, PhotoPath = "/assets/imgs/photoUser14.jpg", Name = "Lina" },
+            new CustomerModel { Id = 23, PhotoPath = "/assets/imgs/photoUser13.jpg", Name = "Skinner" },
+            new CustomerModel { Id = 24, PhotoPath = "/assets/imgs/photoUser14.jpg", Name = "Lina" },
+            new CustomerModel { Id = 25, PhotoPath = "/assets/imgs/photoUser13.jpg", Name = "Skinner" },
+            new CustomerModel { Id = 26, PhotoPath = "/assets/imgs/photoUser14.jpg", Name = "Lina" },
+            new CustomerModel { Id = 27, PhotoPath = "/assets/imgs/photoUser13.jpg", Name = "Skinner" },
+            new CustomerModel { Id = 28, PhotoPath = "/assets/imgs/photoUser14.jpg", Name = "Lina" },
+            new CustomerModel { Id = 29, PhotoPath = "/assets/imgs/photoUser13.jpg", Name = "Skinner" },
+            new CustomerModel { Id = 30, PhotoPath = "/assets/imgs/photoUser14.jpg", Name = "Lina" }
         );
     }
 }
