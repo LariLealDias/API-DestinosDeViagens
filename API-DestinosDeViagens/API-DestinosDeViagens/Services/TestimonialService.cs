@@ -54,7 +54,9 @@ public class TestimonialService
 
 
         TestimonialModel testimonialMapped = _mapper.Map<TestimonialModel>(testimonialDto);
-        return response.choices[0].text;
+        string treatResponse = response.choices[0].text;
+        treatResponse= treatResponse.Replace("\n", " ");
+        return treatResponse;
     }
 
 
