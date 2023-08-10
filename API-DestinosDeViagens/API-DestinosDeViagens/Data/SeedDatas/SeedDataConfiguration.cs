@@ -23,7 +23,11 @@ public class SeedDataConfiguration : IEntityTypeConfiguration<CustomerModel>
             new CustomerModel { Id = 7, PhotoPath = "/assets/imgs/photoUser7.jpg", Name = "Billie" },
             new CustomerModel { Id = 8, PhotoPath = "/assets/imgs/photoUser8.jpg", Name = "Lana" },
             new CustomerModel { Id = 9, PhotoPath = "/assets/imgs/photoUser9.jpg", Name = "Alana" },
-            new CustomerModel { Id = 10, PhotoPath = "/assets/imgs/photoUser10.jpg", Name = "Lina" }
+            new CustomerModel { Id = 10, PhotoPath = "/assets/imgs/photoUser10.jpg", Name = "Liana" },
+            new CustomerModel { Id = 11, PhotoPath = "/assets/imgs/photoUser11.jpg", Name = "Gustavo" },
+            new CustomerModel { Id = 12, PhotoPath = "/assets/imgs/photoUser12.jpg", Name = "Lina" },
+            new CustomerModel { Id = 13, PhotoPath = "/assets/imgs/photoUser13.jpg", Name = "Skinner" },
+            new CustomerModel { Id = 14, PhotoPath = "/assets/imgs/photoUser14.jpg", Name = "Lina" }
         );
     }
 }
