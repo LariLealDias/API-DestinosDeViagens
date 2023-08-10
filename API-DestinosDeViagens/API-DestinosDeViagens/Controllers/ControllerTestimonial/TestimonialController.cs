@@ -25,8 +25,9 @@ public class TestimonialController : ControllerBase
 
             if (testimonialDto.Text == "")
             {
-                dynamic responseChatGPT =  _testimonialService.GetResponseChatGPTAsync(testimonialDto);
-                testimonialDto.Text = responseChatGPT;
+                testimonialDto.Text = _testimonialService.GetResponseChatGPTAsync(testimonialDto);
+                //dynamic responseChatGPT =  _testimonialService.GetResponseChatGPTAsync(testimonialDto);
+                //testimonialDto.Text = responseChatGPT;
             }
           
             TestimonialModel testimonial = _testimonialService.Add(testimonialDto);

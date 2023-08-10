@@ -28,11 +28,10 @@ public class TestimonialService
         return testimonialMapped;
     }
 
-    public async Task<dynamic> GetResponseChatGPTAsync(CreateTestimonialDto testimonialDto)
+    public string GetResponseChatGPTAsync(CreateTestimonialDto testimonialDto)
     {
         string keyChatGPT = _config["ChaveAPIChatGPT"];
-        string promptText = $"Gere um texto que contenha até 160 caracteres, pode conter menos caracteres mas nunca ultrapasse esse limite de 160. \r\n\r\nO texto gerado deve ser coerente com a informação desse TITULO: '{testimonialDto.Title}',  será necessário analisar se o titulo tem o teor: bom, neutro ou ruim. \r\nOs titulos podem variar, mas sempre terá um teor bom, ruim ou neutro.\r\nExemplos de TITULO com teor bom: \r\n- \"Adorei usar o site\"\r\n- \"Eu recomendo de olhos fechado\"\r\n- \"Ótima acessibilidade\"\r\n- etc\r\n\r\nExemplos de TITULO com teor neutro:\r\n- \"facil de usar\"\r\n- \"O site é ok\"\r\n- \"Legal\"\r\n- etc\r\n\r\nExemplos de TITULO com teor ruim:\r\n- \"Pessima experiencia\"\r\n- \"Perdi minha viagem dos sonhos por conta desse site\"\r\n- \"Site desatualizado, perdi meu dinheiro\"\r\n- etc\r\n\r\nSe o titulo for considerado teor  \"bom\" então o texto gerado deverá ter conotação positiva\r\nExemplo de um texto de conotação positiva:\r\nTitulo: Eu gostei\r\n\"Tive ótima experiência usando esse site, consegui concluir minha viagem sem nenhum transtorno\"\r\n\r\nSe o titulo for considerado teor  \"ruim\" então o texto gerado deverá ter conotação negativa\r\nExemplo de um texto de conotação negativa:\r\nTitulo: Achei ruim, pouca opção\r\n\"Catalogo de viagens é muito pequeno, achei pessimo, tem sites melhores por ai\"\r\n\r\nSe o titulo for considerado teor  \"neutra\" então o texto gerado deverá ter conotação neutra\r\nExemplo de um texto de conotação neutra:\r\nTitulo: Nada de mais\r\n\"Tem muita propaganda sobre esse site, mas achei muito razoavel, da pra melhorar, porém tudo funcionou\"\r\n\r\nO tom do texto pode ser gerado de forma formal, casual, informativo, etc.\r\n\r\nO retorno da sua resposta deve pontual e assertivo, não faça introduções, apenas retorne o próprio texto.";
-
+        string promptText = $"Gere um texto relacionado ao título {testimonialDto.Title}, considerando o teor (bom, neutro ou ruim) do título.Considere o assunto: site de viagens e gere na perspectiva de um usuario. O texto gerado pode conter até 35 caracteres. Seja objetivo e mande apenas o texto, sem o titulo.";
         var reqClient = new HttpClient();
         reqClient.DefaultRequestHeaders.Add("authorization", $"Bearer {keyChatGPT}");
 
@@ -41,23 +40,21 @@ public class TestimonialService
             {
                 model = "text-davinci-003",
                 prompt = promptText,
-                max_tokens = 100,
+                max_tokens = 500,
                 temperature = 1
             }
          );
 
-        var httpResponse = await reqClient.PostAsync("https://api.openai.com/v1/completions", new StringContent(json, Encoding.UTF8, "application/json"));
+        var httpResponse =  reqClient.PostAsync("https://api.openai.com/v1/completions", new StringContent(json, Encoding.UTF8, "application/json")).GetAwaiter().GetResult(); ;
 
-        var data = await httpResponse.Content.ReadAsStringAsync();
+        var data =  httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
         var response = JsonConvert.DeserializeObject<dynamic>(data);
+        Console.WriteLine(response.choices[0].text);
 
 
         TestimonialModel testimonialMapped = _mapper.Map<TestimonialModel>(testimonialDto);
-        return response.choice[0].text;
-
-
-        //return "stonf";
+        return response.choices[0].text;
     }
 
 
