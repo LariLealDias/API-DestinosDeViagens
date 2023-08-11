@@ -1,5 +1,5 @@
 # API-DestinosDeViagens
-API Rest em C# com integração do ChatGPT
+API Rest em C# com integração da IA do OpenAI
 
 <br><br> 
 ## 🚧 Status
