@@ -36,31 +36,30 @@ public class TestimonialService
         using (HttpClient reqClient = new HttpClient())
         {
             //var reqClient = new HttpClient();
-        reqClient.DefaultRequestHeaders.Add("authorization", $"Bearer {keyChatGPT}");
+            reqClient.DefaultRequestHeaders.Add("authorization", $"Bearer {keyChatGPT}");
 
-        var json = JsonConvert.SerializeObject(
-            new
-            {
-                model = "text-davinci-003",
-                prompt = promptText,
-                max_tokens = 500,
-                temperature = 1
-            }
-         );
+            var json = JsonConvert.SerializeObject(
+                new
+                {
+                    model = "text-davinci-003",
+                    prompt = promptText,
+                    max_tokens = 500,
+                    temperature = 1
+                }
+             );
 
-        var httpResponse =  reqClient.PostAsync("https://api.openai.com/v1/completions", new StringContent(json, Encoding.UTF8, "application/json")).GetAwaiter().GetResult(); ;
+            var httpResponse =  reqClient.PostAsync("https://api.openai.com/v1/completions", new StringContent(json, Encoding.UTF8, "application/json")).GetAwaiter().GetResult(); ;
 
-        var data =  httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            var data =  httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-        var response = JsonConvert.DeserializeObject<dynamic>(data);
-        Console.WriteLine(response.choices[0].text);
+            var response = JsonConvert.DeserializeObject<dynamic>(data);
+            Console.WriteLine(response.choices[0].text);
 
 
-        TestimonialModel testimonialMapped = _mapper.Map<TestimonialModel>(testimonialDto);
-        string treatResponse = response.choices[0].text;
-        treatResponse = treatResponse.Replace("\n", "");
-        return treatResponse;
-
+            TestimonialModel testimonialMapped = _mapper.Map<TestimonialModel>(testimonialDto);
+            string treatResponse = response.choices[0].text;
+            treatResponse = treatResponse.Replace("\n", "");
+            return treatResponse;
         }
     }
 
