@@ -32,7 +32,10 @@ public class TestimonialService
     {
         string keyChatGPT = _config["ChaveAPIChatGPT"];
         string promptText = $"Gere um texto relacionado ao título {testimonialDto.Title}, considerando o teor (bom, neutro ou ruim) do título.Considere o assunto: site de viagens e gere na perspectiva de um usuario. O texto gerado pode conter até 35 caracteres. Seja objetivo e mande apenas o texto, sem o titulo.";
-        var reqClient = new HttpClient();
+
+        using (HttpClient reqClient = new HttpClient())
+        {
+            //var reqClient = new HttpClient();
         reqClient.DefaultRequestHeaders.Add("authorization", $"Bearer {keyChatGPT}");
 
         var json = JsonConvert.SerializeObject(
@@ -57,6 +60,8 @@ public class TestimonialService
         string treatResponse = response.choices[0].text;
         treatResponse = treatResponse.Replace("\n", "");
         return treatResponse;
+
+        }
     }
 
 
