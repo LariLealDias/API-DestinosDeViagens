@@ -1,6 +1,9 @@
-﻿namespace API_DestinosDeViagens.Services
+﻿using API_DestinosDeViagens.Models;
+
+namespace API_DestinosDeViagens.Services;
+
+public class RoadTripService
 {
-    public class RoadTripService
-    {
-    }
+  
+
 }

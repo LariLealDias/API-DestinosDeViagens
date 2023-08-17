@@ -7,7 +7,7 @@ public class RoadTripModel
     [Key]
     public int Id { get; set; }
     public int TotalDays { get; set; }
-    public string Attractions { get; set; }
-    public string AverageCostOfAccommodation { get; set; }
-    public string AverageCostOfAlimentation { get; set; }
+    public string Sights { get; set; }
+    public string AverageAccommodationPrice { get; set; }
+    public string AverageMealPrice { get; set; }
 }
