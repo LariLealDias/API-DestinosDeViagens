@@ -11,9 +11,11 @@ namespace API_DestinosDeViagens.Controllers.ControllerDestination;
 public class DestinationController : ControllerBase
 {
     private DestinationService _destinationService;
-    public DestinationController(DestinationService destinationService, IConfiguration config)
+    private RoadTripService _roadTripService;
+    public DestinationController(DestinationService destinationService, RoadTripService roadTripService)
     {
         _destinationService = destinationService;
+        _roadTripService = roadTripService; 
     }
 
     [HttpPost]
