@@ -27,7 +27,7 @@ public class TestimonialController : ControllerBase
             {
                 testimonialDto.Text = _testimonialService.GetResponseChatGPTAsync(testimonialDto);
             }
-          
+
             TestimonialModel testimonial = _testimonialService.Add(testimonialDto);
 
             //send a location  

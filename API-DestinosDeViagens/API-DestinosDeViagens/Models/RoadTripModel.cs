@@ -10,4 +10,7 @@ public class RoadTripModel
     public string Sights { get; set; }
     public string AverageAccommodationPrice { get; set; }
     public string AverageMealPrice { get; set; }
+
+    public int DestinationModelId { get; set; }
+    public virtual DestinationModel DestinationModel { get; set; }
 }
