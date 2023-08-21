@@ -20,4 +20,6 @@ public class DestinationModel
     [Required(ErrorMessage = "DescriptiveText field can't be empty")]
     [MaxLength(160, ErrorMessage = "DescriptiveText field can't ultrapass 160 characters")]
     public string DescriptiveText { get; set; }
+
+    public virtual RoadTripModel RoadTrip { get; set; }
 }
