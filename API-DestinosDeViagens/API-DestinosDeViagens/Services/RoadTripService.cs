@@ -15,7 +15,7 @@ public class RoadTripService
     public string GetResponseIAToSightsFildinRoadTripModel(RoadTripModel roadTrip)
     {
         string KeyOpenai = _config["ChaveAPIChatGPT"];
-        string promptText = "";
+        string promptText = $"Gere 3 locais turisticos de {roadTrip.DestinationModel.Title}. O texto gerado pode conter até 35 caracteres. Seja objetivo e mande apenas os nomes dos locais.";
 
         using (HttpClient Client = new HttpClient())
         {

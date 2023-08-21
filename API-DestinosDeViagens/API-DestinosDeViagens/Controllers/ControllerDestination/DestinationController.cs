@@ -21,6 +21,8 @@ public class DestinationController : ControllerBase
     {
         try
         {
+
+
             DestinationModel destination = _destinationService.Add(destinationDto);
 
             //send a location  
