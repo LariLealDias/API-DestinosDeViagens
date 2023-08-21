@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace API_DestinosDeViagens.Services;
 
-public class DestinationService 
+public class DestinationService
 {
     private IDestinationRepository _iDestinationRepository;
     private IMapper _mapper;
