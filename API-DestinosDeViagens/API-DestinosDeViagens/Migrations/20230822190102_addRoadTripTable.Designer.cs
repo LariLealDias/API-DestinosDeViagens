@@ -2,6 +2,7 @@
 using API_DestinosDeViagens.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_DestinosDeViagens.Migrations
 {
     [DbContext(typeof(DestinosdeViagensContext))]
-    partial class DestinosdeViagensContextModelSnapshot : ModelSnapshot
+    [Migration("20230822190102_addRoadTripTable")]
+    partial class addRoadTripTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

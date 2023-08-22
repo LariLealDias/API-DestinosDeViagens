@@ -23,9 +23,19 @@ public class DestinationController : ControllerBase
     {
         try
         {
-
-
             DestinationModel destination = _destinationService.Add(destinationDto);
+            string title = destination.Title;
+
+
+            Console.WriteLine("AQUI Controller" + title);
+
+            if (title == null)
+            {
+                BadRequest();
+                Console.WriteLine("AQUI null title" + title);
+
+            }
+            _destinationService.CreateRoadTrip(title);
 
             //send a location  
             var controllerName = ControllerContext.ActionDescriptor.ControllerName;

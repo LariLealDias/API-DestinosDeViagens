@@ -12,10 +12,15 @@ public class RoadTripService
         _config = config;
     }
 
-    public string GetResponseIAToSightsFildinRoadTripModel(RoadTripModel roadTrip)
+    public string GetResponseIAToSightsFildInRoadTripModel(string title)
     {
         string KeyOpenai = _config["ChaveAPIChatGPT"];
-        string promptText = $"Gere 3 locais turisticos de {roadTrip.DestinationModel.Title}. O texto gerado pode conter até 35 caracteres. Seja objetivo e mande apenas os nomes dos locais.";
+
+        //RoadTripModel roadTrip = new RoadTripModel();
+        //title = roadTrip.DestinationModel.Title;
+        //Console.WriteLine("AQUI SERVICE" + title);
+
+        string promptText = $"Gere 3 locais turisticos de {title}. O texto gerado pode conter até 35 caracteres. Seja objetivo e mande apenas os nomes dos locais.";
 
         using (HttpClient Client = new HttpClient())
         {

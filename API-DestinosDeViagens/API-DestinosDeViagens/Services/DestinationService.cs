@@ -9,11 +9,13 @@ public class DestinationService
 {
     private IDestinationRepository _iDestinationRepository;
     private IMapper _mapper;
+    private RoadTripService _roadTripService;
 
-    public DestinationService(IDestinationRepository iDestinationRepository, IMapper mapper)
+    public DestinationService(IDestinationRepository iDestinationRepository, IMapper mapper, RoadTripService roadTripService)
     {
         _iDestinationRepository = iDestinationRepository;
         _mapper = mapper;
+        _roadTripService = roadTripService; 
     }
 
 
@@ -25,6 +27,14 @@ public class DestinationService
         return destinationMapped;
     }
 
+    public void CreateRoadTrip(string title)
+    {
+        //RoadTripModel roadTrip = new RoadTripModel();
+        ////title = roadTrip.DestinationModel.Title;
+        //roadTrip.DestinationModel = new DestinationModel { Title = title };
+
+        _roadTripService.GetResponseIAToSightsFildInRoadTripModel(title);
+    }
 
     //GET 3 resource 
     public IEnumerable<ReadDestinationDto> GetPaging(int skip = 0, int take = 6)

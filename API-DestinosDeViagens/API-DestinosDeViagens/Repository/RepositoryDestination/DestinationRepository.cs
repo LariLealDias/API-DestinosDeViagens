@@ -1,5 +1,6 @@
 ﻿using API_DestinosDeViagens.Data;
 using API_DestinosDeViagens.Models;
+using API_DestinosDeViagens.Services;
 
 namespace API_DestinosDeViagens.Repository.RepositoryDestination;
 
@@ -17,6 +18,8 @@ public class DestinationRepository : IDestinationRepository
         _contex.Destinations.Add(destimonial);
         SaveChanges();
     }
+
+
 
 
     public IEnumerable<DestinationModel> GetAll()

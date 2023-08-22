@@ -30,6 +30,9 @@ builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
 //Destination config
 builder.Services.AddScoped<DestinationService>();
 builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
+
+//RoadTrip
+builder.Services.AddScoped<RoadTripService>();
 #endregion
 
 #region config Cors
