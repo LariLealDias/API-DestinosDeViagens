@@ -24,6 +24,7 @@ public class DestinationService
     {
         DestinationModel destinationMapped = _mapper.Map<DestinationModel>(destinationDto);
         _iDestinationRepository.Add(destinationMapped);
+        
         return destinationMapped;
     }
 

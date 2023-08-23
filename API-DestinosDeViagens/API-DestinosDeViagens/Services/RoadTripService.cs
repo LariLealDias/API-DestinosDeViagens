@@ -1,4 +1,5 @@
 ﻿using API_DestinosDeViagens.Models;
+using API_DestinosDeViagens.Repository.RepositoryRoadTrip;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -7,9 +8,11 @@ namespace API_DestinosDeViagens.Services;
 public class RoadTripService
 {
     private IConfiguration _config;
-    public RoadTripService(IConfiguration config)
+    private IRoadTripRepository _iroadTripRepositoy;
+    public RoadTripService(IConfiguration config, IRoadTripRepository roadTripRepositoy)
     {
         _config = config;
+        _iroadTripRepositoy = roadTripRepositoy;
     }
 
     public string GetResponseIAToSightsFildInRoadTripModel(string title)
@@ -44,6 +47,11 @@ public class RoadTripService
             Console.WriteLine(response.choices[0].text);
 
             string treatResponse = response.choices[0].text;
+
+            RoadTripModel roadTrip = new RoadTripModel();
+            roadTrip.Sights = treatResponse;
+            _iroadTripRepositoy.Add(roadTrip);
+
 
             treatResponse = treatResponse.Replace("\n", "");
 

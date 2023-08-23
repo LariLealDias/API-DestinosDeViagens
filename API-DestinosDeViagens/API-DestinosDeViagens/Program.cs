@@ -1,5 +1,6 @@
 using API_DestinosDeViagens.Data;
 using API_DestinosDeViagens.Repository.RepositoryDestination;
+using API_DestinosDeViagens.Repository.RepositoryRoadTrip;
 using API_DestinosDeViagens.Repository.RepositoryTestimonial;
 using API_DestinosDeViagens.Services;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,8 @@ builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
 
 //RoadTrip
 builder.Services.AddScoped<RoadTripService>();
+builder.Services.AddScoped<IRoadTripRepository, RoadTripRepository>();
+
 #endregion
 
 #region config Cors
