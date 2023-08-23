@@ -18,6 +18,13 @@ public class DestinosdeViagensContext : DbContext
           .HasOne(c => c.TestimonialModel )
           .WithOne(t => t.CustomerModel)
           .HasForeignKey<TestimonialModel>(t => t.CustomerModelId);
+
+        //config cascade To RoadTrip and Destination
+        modelBuilder.Entity<RoadTripModel>()
+            .HasOne(r => r.DestinationModel)
+            .WithOne(d => d.RoadTrip)
+            .HasForeignKey<RoadTripModel>(t => t.DestinationModelId)
+             .OnDelete(DeleteBehavior.Cascade);
     }
 
     public DbSet<TestimonialModel> Testimonials { get; set;}
