@@ -1,6 +1,7 @@
 ﻿using API_DestinosDeViagens.Data.SeedDatas;
 using API_DestinosDeViagens.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace API_DestinosDeViagens.Data;
 
@@ -8,6 +9,12 @@ public class DestinosdeViagensContext : DbContext
 {
     public DestinosdeViagensContext(DbContextOptions<DestinosdeViagensContext> opts) : base(opts)
     {
+
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.LogTo(Console.WriteLine);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,6 +32,7 @@ public class DestinosdeViagensContext : DbContext
             .WithOne(d => d.RoadTrip)
             .HasForeignKey<RoadTripModel>(t => t.DestinationModelId)
              .OnDelete(DeleteBehavior.Cascade);
+
     }
 
     public DbSet<TestimonialModel> Testimonials { get; set;}

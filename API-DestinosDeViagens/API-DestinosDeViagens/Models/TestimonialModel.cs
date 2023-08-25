@@ -13,8 +13,6 @@ public class TestimonialModel
     public string Title { get; set; }
 
 
-    //[Required(ErrorMessage = "Text field can't be empty")]
-    //[MaxLength(300, ErrorMessage = "Text field can't ultrapass 300 characters")]
     public string Text { get; set; }
 
     //1:1
