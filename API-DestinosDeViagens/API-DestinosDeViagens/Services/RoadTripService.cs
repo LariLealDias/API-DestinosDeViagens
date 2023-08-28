@@ -15,7 +15,7 @@ public class RoadTripService
         _iroadTripRepositoy = roadTripRepositoy;
     }
 
-    public string GetResponseIAToSightsFildInRoadTripModel(string title)
+    public string GetResponseIAToSightsFildInRoadTripModel(string title, int id)
     {
         string KeyOpenai = _config["ChaveAPIChatGPT"];
 
@@ -44,13 +44,19 @@ public class RoadTripService
             var data = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
             var response = JsonConvert.DeserializeObject<dynamic>(data);
+            
             Console.WriteLine(response.choices[0].text);
 
             string treatResponse = response.choices[0].text;
 
             RoadTripModel roadTrip = new RoadTripModel();
             roadTrip.Sights = treatResponse;
+
+            roadTrip.DestinationModelId = id;
+            
             _iroadTripRepositoy.Add(roadTrip);
+
+            Console.WriteLine("Service roadtrip: " + roadTrip.Id + roadTrip.Sights + "OUTROS CAMPOS" + roadTrip.AverageMealPrice + roadTrip.AverageAccommodationPrice);
 
 
             treatResponse = treatResponse.Replace("\n", "");

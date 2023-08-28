@@ -13,7 +13,13 @@ public class RoadTripRepository : IRoadTripRepository
     }
     public void Add(RoadTripModel roadTrip)
     {
-       _contex.RoadTrips.Add(roadTrip);
+        Console.WriteLine(  "ESTOU NA REPOSITORY");
+
+
+        _contex.RoadTrips.Add(roadTrip);
+
+        Console.WriteLine("ESTOU em baixo do add");
+
         _contex.SaveChanges();
     }
 }

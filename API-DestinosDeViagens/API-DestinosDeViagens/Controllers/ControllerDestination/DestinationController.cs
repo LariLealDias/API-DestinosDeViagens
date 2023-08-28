@@ -11,11 +11,9 @@ namespace API_DestinosDeViagens.Controllers.ControllerDestination;
 public class DestinationController : ControllerBase
 {
     private DestinationService _destinationService;
-    private RoadTripService _roadTripService;
-    public DestinationController(DestinationService destinationService, RoadTripService roadTripService)
+    public DestinationController(DestinationService destinationService )
     {
         _destinationService = destinationService;
-        _roadTripService = roadTripService; 
     }
 
     [HttpPost]
@@ -28,6 +26,8 @@ public class DestinationController : ControllerBase
 
 
             Console.WriteLine("AQUI Controller" + title);
+            Console.WriteLine("AQUI Controller restante: " + destination.Id + destination.PhotoPath + destination.Price + destination.DescriptiveText);
+
 
             if (title == null)
             {
@@ -35,7 +35,7 @@ public class DestinationController : ControllerBase
                 Console.WriteLine("AQUI null title" + title);
 
             }
-            _destinationService.CreateRoadTrip(title);
+            _destinationService.CreateRoadTrip(title, destination.Id);
 
             //send a location  
             var controllerName = ControllerContext.ActionDescriptor.ControllerName;

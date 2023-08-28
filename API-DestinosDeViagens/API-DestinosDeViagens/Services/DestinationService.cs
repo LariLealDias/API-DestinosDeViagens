@@ -28,13 +28,13 @@ public class DestinationService
         return destinationMapped;
     }
 
-    public void CreateRoadTrip(string title)
+    public void CreateRoadTrip(string title, int id)
     {
         //RoadTripModel roadTrip = new RoadTripModel();
         ////title = roadTrip.DestinationModel.Title;
         //roadTrip.DestinationModel = new DestinationModel { Title = title };
 
-        _roadTripService.GetResponseIAToSightsFildInRoadTripModel(title);
+        _roadTripService.GetResponseIAToSightsFildInRoadTripModel(title, id);
     }
 
     //GET 3 resource 
