@@ -3,7 +3,7 @@ API Rest em C# com integração da IA do OpenAI
 
 <br><br> 
 ## 🚧 Status
-![Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=flat-square)
+![Em Desenvolvimento](https://img.shields.io/badge/Status-%20Concluido-green?style=flat-square)
 
 <br><br>
 ## 📝 DESCRIÇÃO
